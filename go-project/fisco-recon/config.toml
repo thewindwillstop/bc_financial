@@ -1,0 +1,17 @@
+[Network]
+Type="channel"
+CAFile="ca.crt"
+Cert="sdk.crt"
+Key="sdk.key"
+
+[[Network.Connection]]
+NodeURL="127.0.0.1:20200"
+GroupID=1
+
+[Chain]
+ChainID=1
+SMCrypto=false
+
+[Account]
+# only support PEM format for now
+KeyFile="user.pem"
