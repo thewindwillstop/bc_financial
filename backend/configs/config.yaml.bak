@@ -1,0 +1,38 @@
+# 服务器配置
+server:
+  port: 8080
+  mode: debug  # debug, release, test
+
+# 数据库配置
+database:
+  mysql:
+    host: localhost
+    port: 3306
+    username: root
+    password: lin123456
+    database: bc_reconciliation
+    charset: utf8mb4
+
+# 区块链配置
+blockchain:
+  config_file: /home/lin123456/colloge_project/bc_financial/go-project/fisco-recon/config.toml
+  contract_address: "0xeed55f17ea7d7646681f34fe95a6a5cfe003cdc3"  # 已部署的Reconciliation合约地址
+
+# 日志配置
+log:
+  level: info  # debug, info, warn, error
+  filename: logs/app.log
+  max_size: 100  # MB
+  max_age: 30    # days
+  max_backups: 3
+  compress: true
+
+# JWT配置
+jwt:
+  secret: "your-jwt-secret-key-please-change-in-production"
+  expire_time: 24h  # token过期时间
+  issuer: "bc-reconciliation"
+
+# 加密配置
+encryption:
+  key: "your-32-byte-encryption-key!!"  # AES加密密钥,必须是32字节

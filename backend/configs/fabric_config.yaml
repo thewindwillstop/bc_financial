@@ -1,0 +1,65 @@
+# Hyperledger Fabric 配置文件
+
+# 版本信息
+version: 1.0.0
+
+# 客户端信息
+client:
+  # 组织名称
+  organization: Org1
+
+# Channel 配置
+channels:
+  # 默认的 Channel
+  mychannel:
+    orderers:
+      - orderer.example.com
+    peers:
+      peer0.org1.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+# 组织配置
+organizations:
+  Org1:
+    mspid: Org1MSP
+    peers:
+      - peer0.org1.example.com
+    certificateAuthorities:
+      - ca-org1
+    # 本地 MSP 路径
+    cryptoPath: peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+
+# Orderer 配置
+orderers:
+  orderer.example.com:
+    url: grpcs://localhost:7050
+    grpcOptions:
+      allow-insecure: false
+      ssl-target-name-override: orderer.example.com
+    tlsCACerts:
+      path: crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+
+# Peer 配置
+peers:
+  peer0.org1.example.com:
+    url: grpcs://localhost:7051
+    grpcOptions:
+      allow-insecure: false
+      ssl-target-name-override: peer0.org1.example.com
+    tlsCACerts:
+      path: crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+
+# Certificate Authorities 配置
+certificateAuthorities:
+  ca-org1:
+    url: https://localhost:7054
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: adminpw

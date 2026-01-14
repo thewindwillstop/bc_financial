@@ -1,0 +1,15 @@
+
+# FISCO BCOS 节点数据
+fisco/nodes/127.0.0.1/*/data/
+fisco/nodes/127.0.0.1/*/log/
+fisco/nodes/127.0.0.1/*/nohup.out
+fisco/nodes/127.0.0.1/console/
+fisco/nodes/127.0.0.1/*.tar.gz
+
+# Go 编译文件
+backend/bin/
+backend/api
+*.exe
+
+# 日志文件
+*.log
